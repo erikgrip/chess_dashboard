@@ -1,3 +1,5 @@
+# fetch_chess_data
+
 ## Table of contents
 * [General info](#general-info)
 * [Technologies](#technologies)
