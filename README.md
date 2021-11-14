@@ -6,7 +6,7 @@
 * [Output data](#output-data)
 
 ## General info
-This is a project to fetch a given player's game history from chess.com and save it in tabular format. The API is documented [here](https://www.chess.com/news/view/published-data-api).
+This is a project to fetch a given player's game history from [Chess.com](https://www.chess.com) and save it in tabular format. The API is documented [here](https://www.chess.com/news/view/published-data-api).
 
 ## Technologies
 Project is created with:
