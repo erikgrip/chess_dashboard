@@ -1,0 +1,9 @@
+version: '3.9'
+
+services:
+  fetcher:
+    build: .
+    volumes:
+     - ./src:/src
+     - ./data:/data
+    command: ["python3", "run.py", "${PLAYER_NAME}", "${LOCAL_TZ}"]
