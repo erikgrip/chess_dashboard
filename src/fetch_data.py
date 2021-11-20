@@ -37,7 +37,7 @@ def get_metadata(player):
     metadata = {
         'player_name': player,
         'aggregation_tz': tz_str,
-        'aggregation_timestamp': datetime.now(tz).strftime("%H:%M:%S")}
+        'aggregation_timestamp': datetime.now(tz).strftime("%Y-%m-%d %H:%M:%S")}
     return metadata
 
 
