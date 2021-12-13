@@ -36,22 +36,30 @@ def get_metadata(player):
 
     metadata = {
         'player_name': player,
-        'aggregation_tz': tz_str,
-        'aggregation_timestamp': datetime.now(tz).strftime("%Y-%m-%d %H:%M:%S")}
+        'raw_data_tz': tz_str,
+        'fetch_timestamp': datetime.now(tz).strftime("%Y-%m-%d %H:%M:%S")}
     return metadata
 
 
 def main(player):
     games_dict = {'data': {}}
+
+    # Get metadata
     games_dict['metadata'] = get_metadata(player)
 
+    # Fetch game data
     archive_urls = get_game_archive_list(player)
     for url in archive_urls:
         archive_games = read_games_from_archives(url)
         for game in archive_games:
-            game_id = game_id_from_url(game['url'])
-            games_dict['data'][game_id] = game
+            # Only fetch rated games with standard rules.
+            # Other games have other data entries and won't easily
+            # be stored in the same format.
+            if game['rated'] & (game['rules'] == 'chess'):
+                game_id = game_id_from_url(game['url'])
+                games_dict['data'][game_id] = game
 
+    # Write to file
     with open('data/raw_data.json', 'w') as fp:
         json.dump(games_dict, fp)
 

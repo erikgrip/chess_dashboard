@@ -65,9 +65,9 @@ def format_game_data(game):
         'end_date_utc': pgn_meta['EndDate'],
         'end_time_utc': pgn_meta['EndTime'],
         'white_name': pgn_meta['White'],
-        'white_rating': pgn_meta['WhiteElo'],
+        'white_rating': int(pgn_meta['WhiteElo']),
         'black_name': pgn_meta['Black'],
-        'black_rating': pgn_meta['BlackElo'],
+        'black_rating': int(pgn_meta['BlackElo']),
         'time_control': pgn_meta['TimeControl'],
         'time_class': game['time_class'],
         'result': pgn_meta['Result'],
@@ -121,7 +121,10 @@ def main(local_tz):
     with open('data/raw_data.json') as json_file:
         input_file = json.load(json_file)
     formatted_games = [format_game_data(game) for _, game in input_file['data'].items()]
+
+    # Read and update fetch metadata
     raw_file_metadata = input_file['metadata']
+    raw_file_metadata['timestamps_localized_to'] = local_tz
     player = raw_file_metadata['player_name']
 
     df = pd.DataFrame(formatted_games)
