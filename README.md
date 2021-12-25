@@ -16,22 +16,18 @@ Project is created with:
 * Python 3
 
 ## Setup
-To run this project you need Docker and Docker Compose. See official docs [here](https://docs.docker.com/compose/install/) for instructions on how to install.
+To run this project you need Docker and Docker Compose. See official docs [here](https://docs.docker.com/compose/install/) for instructions on how to install. With Docker and docker-compose installed, clone the repository using a local terminal.
+```
+$ git clone https://github.com/erikgrip/fetch_chess_data.git
+```
 
 In the project's top folder there's a file named .env_example. Rename it .env and make any desired changes to the variables.
 * PLAYER_NAME: The alias of the player who's games to download
 * LOCAL_TZ: A time zone to convert timestamps to (Optional).
 
-Once the .env file is saved, navigate to the project folder and type the line below to build the image.
-
+Once the .env file is saved, navigate to the project folder and type the line below to build the image and start a container.
 ```
-$ docker-compose build
-```
-
-Building the image is done once. Then run this line to download the data.
-
-```
-$ docker-compose up
+$ docker-compose up -d
 ```
 When the download is complete the data is available in the /data directory in the project.
 
