@@ -1,9 +1,12 @@
 version: '3.9'
 
 services:
-  fetcher:
+ dashboard:
     build: .
     volumes:
-     - ./src:/src
-     - ./data:/data
+    - ./fetch_chess_data:/fetch_chess_data
+    - ./dashboard:/dashboard
+    - ./data:/data
+    ports:
+    - 8050:8050
     command: ["python3", "run.py", "${PLAYER_NAME}", "${LOCAL_TZ}"]
