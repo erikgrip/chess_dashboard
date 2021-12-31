@@ -2,6 +2,7 @@ from datetime import datetime
 import pytz
 import requests
 import json
+import os
 import argparse
 
 
@@ -60,7 +61,7 @@ def main(player):
                 games_dict['data'][game_id] = game
 
     # Write to file
-    with open('data/raw_data.json', 'w') as fp:
+    with open('/data/raw_data.json', 'w') as fp:
         json.dump(games_dict, fp)
 
 
