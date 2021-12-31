@@ -1,4 +1,4 @@
-# fetch_chess_data
+# chess_dashboard
 
 ## Table of contents
 * [General info](#general-info)
@@ -8,17 +8,20 @@
 * [Output data](#output-data)
 
 ## General info
-This is a project to fetch a given player's game history from [Chess.com](https://www.chess.com) and save it in tabular format. The API is documented [here](https://www.chess.com/news/view/published-data-api).
+This is a project to
+1) Fetch a given player's game history from [Chess.com](https://www.chess.com) and save it in tabular format. The API is documented [here](https://www.chess.com/news/view/published-data-api).
+2) Run a local dashboard app to display the player's performance by time class.
 
 ## Technologies
 Project is created with:
 * Docker
 * Python 3
+* Dash
 
 ## Setup
 To run this project you need Docker and Docker Compose. See official docs [here](https://docs.docker.com/compose/install/) for instructions on how to install. With Docker and docker-compose installed, clone the repository using a local terminal.
 ```
-$ git clone https://github.com/erikgrip/fetch_chess_data.git
+$ git clone https://github.com/erikgrip/chess_dashboard.git
 ```
 
 In the project's top folder there's a file named .env_example. Rename it .env and make any desired changes to the variables.
@@ -27,9 +30,9 @@ In the project's top folder there's a file named .env_example. Rename it .env an
 
 Once the .env file is saved, navigate to the project folder and type the line below to build the image and start a container.
 ```
-$ docker-compose up -d
+$ docker-compose up
 ```
-When the download is complete the data is available in the /data directory in the project.
+When the container is running the downloaded data is available in the /data directory in the project, and the dashboard can be accessed at http://localhost:8050/.
 
 ## Raw data
 There's new data added to the API calls over time. At the time of this documentation a typical game would look like this:
