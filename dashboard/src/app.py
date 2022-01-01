@@ -1,9 +1,5 @@
-import pandas as pd
-import numpy as np
 import pyarrow.parquet as pq
 import json
-from datetime import date
-import time
 import plotly.express as px
 import dash
 import dash_bootstrap_components as dbc
@@ -137,7 +133,7 @@ def main():
     app = dash.Dash(__name__, external_stylesheets=[dbc.themes.LUX])
     app.layout = define_layout(filter_pane_width, player_name, fetch_timestamp)
 
-    # Define callbacks to upddate dashboard
+    # Define callbacks to update dashboard
     @app.callback(
         [Output(component_id='content-rating',
                 component_property='children'),
